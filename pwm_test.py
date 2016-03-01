@@ -56,7 +56,7 @@ class PWMMotor:
 		self.duty = 0.0
 		self.pwm = GPIO.PWM(self.p_phase, self.pwm_freq)
 		self.pwm.start(self.duty)
-	def rotate(vel):
+	def rotate(self, vel):
 		if vel >= 0:
 			GPIO.output(self.p_phase, GPIO.LOW)
 		elif vel < 0:
@@ -66,6 +66,11 @@ class PWMMotor:
 		if (self.duty > self.pwm_limit):
 			self.duty =self.pwm_limit
 		self.pwm.ChangeDutyCycle(dc)
+
+class Locomotor:
+    def __init__self(self, mt_left, mt_right):
+        self.motor_left = mt_left
+        self.motor_right = mt_right
 
 def motor_rotate(pin_phase, pwm, vel):
 	if vel >= 0:
