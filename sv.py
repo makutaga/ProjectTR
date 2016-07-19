@@ -63,11 +63,15 @@ server.register_function(goForward)
 
 bus = i2c.smbus.SMBus(1)
 mag = i2c.MagSensor(bus, i2c.mag_dev_addr)
+acc = i2c.AccSensor(bus)
 
 def measMag():
-	return mag.meas_single()
+	return mag.measSingle()
 server.register_function(measMag)
 
+def measAcc():
+	return acc.measSingle()
+server.register_function(measAcc)
 
 server.serve_forever()
 #server.handle_request()
