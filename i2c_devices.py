@@ -179,11 +179,12 @@ if __name__ == "__main__":
 			bb = math.sqrt(b[0]**2 + b[1]**2 + b[2]**2)
 
 			a = acc.measSingle()
+			aa = math.sqrt(a[0]**2 + a[1]**2 + a[2]**2)
 			
-			print b, bb, a
+			print '[{0[0]:6d} {0[1]:6d} {0[2]:6d}] {1} [{2[0]:6d} {2[1]:6d} {2[2]:6d}] {3}'.format(b, bb, a, aa)
 
 		except KeyboardInterrupt:
 			break
 
 
-		time.sleep(0.1)
+		time.sleep(0.05)

@@ -80,6 +80,15 @@ class Locomotor:
 		self.move(-vel, -vel)
 	def stop(self):
 		self.move(0, 0)
+	def move_circle(self, vel):
+		self.move(vel, vel * 0.4)
+	def move_eight(self, vel):
+		self.move(vel, vel * 0.4)
+		time.sleep(8)
+		self.move(vel * 0.4, vel)
+		time.sleep(8)
+		self.stop()
+		
 
 if __name__ == "__main__":
 	getch = _Getch()
@@ -95,7 +104,7 @@ if __name__ == "__main__":
 	loc = Locomotor(mt_left, mt_right)
 	vel_normal = pwm_limit * 0.5
 	vel_high = pwm_limit * 0.8
-	vel_arm = pwm_limit * 0.3
+	vel_arm = pwm_limit * 0.4
 
 	try:
 		while 1:
@@ -136,6 +145,10 @@ if __name__ == "__main__":
 				print "Down"
 				loc.stop()
 				mt_arm.rotate(-vel_arm)
+			elif key == "c":
+				loc.move_circle(vel_high)
+			elif key == "8":
+				loc.move_eight(vel_high)
 			elif key == "q":
 				break
 			else:
